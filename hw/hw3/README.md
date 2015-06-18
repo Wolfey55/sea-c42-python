@@ -22,4 +22,4 @@ snowboarding and mountain biking...all the stereotypical Seattlite activities.
 For a while now, I've also been interested in picking up wood working as a new
 hobby. I got this dvd from [Bear Mountain Boats]
 (http://www.bearmountainboats.com/) and one day, when I have the time, space and
-money I hope to build my own canoe!
+money I hope to build my own canoe! test
