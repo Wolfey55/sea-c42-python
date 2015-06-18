@@ -15,7 +15,7 @@ years I can confidently say that it's not something I want to do for the rest of
 my life so when I heard about Code Fellows, the skills you teach and job
 placement guarantee I was immediately interested, so here I am...
 
-## Some of my interests
+## Some of my interests.
 
 I like to do a lot of active things like hiking, rock climbing, wakeboarding,
 snowboarding and mountain biking...all the stereotypical Seattlite activities.
