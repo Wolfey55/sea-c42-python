@@ -12,15 +12,17 @@ for i in range(num_range):
 
 
 def lucas(n):
-    l.append(2)
-    l.append(1)
-    if l <= 2:
-        return l
+    # function to print lucas series
+    if n < 1:
+        return 2
+    if n == 1:
+        return n
     else:
-        return(lucas(l - 1) + lucas(l - 2))
+        return(lucas(n - 1) + lucas(n - 2))
 
-
+# input from user
 num_range2 = int(input("How many terms shall we evaluate? "))
 
+# print the range set by the user
 for i in range(num_range2):
     print(lucas(i))
