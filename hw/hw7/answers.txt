@@ -38,7 +38,9 @@ The same error occured when the line containing 'gc_count = 0' was commented out
 
 Problem 4:
 
-...
+sample_1.fastq:
+    GC-content: 0.4302926296296296
+    AT-content: 0.5689938518518518
 
 Problem 5:
 
