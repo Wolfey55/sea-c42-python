@@ -49,11 +49,14 @@ for line in inputfile:
 
 # Total nucleotides seen so far.
 total_count = 0
-# Number of G and C nucleotides seen so far.
+# Number of GC and AT nucleotides seen so far.
 gc_count = 0
-# Number of A and T nucleotides seen so far.
 at_count = 0
-
+# Number of G, C, A and T nucleotides seen so far (individually).
+g_count = 0
+c_count = 0
+a_count = 0
+t_count = 0
 
 # for each base pair in the string,
 for bp in seq:
@@ -68,7 +71,27 @@ for bp in seq:
     # if the bp is an A or T,
     if bp == 'A' or bp == 'T':
         # increment the count of AT
-        at_count = at_count +1
+        at_count = at_count + 1
+
+    # if the bp is a G,
+    if bp == 'G':
+        # increment the count of G
+        g_count = g_count + 1
+
+    # if the bp is a C,
+    if bp == 'C':
+        # increment the count of C
+        c_count = c_count + 1
+
+    # if the bp is a A,
+    if bp == 'A':
+        # increment the count of A
+        a_count = a_count + 1
+
+    # if the bp is a T,
+    if bp == 'T':
+        # increment the count of T
+        t_count = t_count + 1
 
 
 # divide the gc_count by the total_count
@@ -80,3 +103,7 @@ at_content = float(at_count) / total_count
 # Print the answer
 print('GC-content:', gc_content)
 print('AT-content:', at_content)
+print('G-count:', g_count)
+print('C-count:', c_count)
+print('A-count:', a_count)
+print('T-count:', t_count)

@@ -44,7 +44,11 @@ sample_1.fastq:
 
 Problem 5:
 
-...
+sample_1.fastq:
+    G-count: 5738773
+    C-count: 5879128
+    A-count: 7701287
+    T-count: 7661547
 
 Problem 6:
 
