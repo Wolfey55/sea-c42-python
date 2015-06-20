@@ -32,7 +32,9 @@ Traceback (most recent call last):
     linenum = linenum + 1
 NameError: name 'linenum' is not defined
 
+The description of the NameError is pretty straight forward. Because linenum is no longer defined the program can't count what line it is on and therefore can't run the if statement that determines if the line it is on is one that contains dna data that needs to be processed.
 
+The same error occured when the line containing 'gc_count = 0' was commented out. The GC content can't be counted because the starting point (0) hasn't been defined.
 
 Problem 4:
 
