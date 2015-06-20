@@ -1,0 +1,63 @@
+Name: ...
+CSE 140
+Homework 2
+
+For each problem that requires a written answer, write (or copy-and-paste)
+your answers in this file.  When you are done, you should have replaced all
+the ellipses (the three dots) with your answers.
+
+At the end, you will turn in this file along with your modified
+dna_analysis.py program.
+
+
+Problem 1:
+
+(No answers in this file.)
+
+Problem 2:
+
+sample_1.fastq: GC-content: 0.4302926296296296
+sample_2.fastq: GC-content: 0.45105133333333336
+sample_3.fastq: GC-content: 0.6468641125240355
+sample_4.fastq: GC-content: 0.3478523411663431
+sample_5.fastq: GC-content: 0.2631578947368421
+sample_6.fastq: GC-content: 0.4915185185185185
+
+Problem 3:
+
+After commenting out 'seq = ""' and 'linenum = 0' I got the following error:
+
+Traceback (most recent call last):
+  File "dna_analysis.py", line 38, in <module>
+    linenum = linenum + 1
+NameError: name 'linenum' is not defined
+
+
+
+Problem 4:
+
+...
+
+Problem 5:
+
+...
+
+Problem 6:
+
+...
+
+Problem 7:
+
+...
+
+Problem 8:
+
+...
+
+Collaboration:
+
+...
+
+Reflection:
+
+...
