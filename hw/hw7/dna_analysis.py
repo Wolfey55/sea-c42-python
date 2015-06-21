@@ -105,12 +105,16 @@ gc_content = float(gc_count) / sum_gcat
 # divide the at_count by the sum_gcat
 at_content = float(at_count) / sum_gcat
 
+# calculates the AT/GC ratio.
+at_gc_ratio = (a_count + t_count) / (g_count + c_count)
+
 # Print the answer
 print('Total Count:', total_count)
 print('Sequence Length:', len(seq))
 print('Sum of GCAT:', sum_gcat)
 print('GC-content:', gc_content)
 print('AT-content:', at_content)
+print('AT/GC Ratio:', at_gc_ratio)
 print('G-count:', g_count)
 print('C-count:', c_count)
 print('A-count:', a_count)

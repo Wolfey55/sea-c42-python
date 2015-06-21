@@ -110,7 +110,8 @@ My program incorrectly computed the GC and AT content because of this. I will fi
 
 Problem 7:
 
-...
+sample_1.fastq:
+    AT/GC Ratio: 1.3223416174746196
 
 Problem 8:
 
