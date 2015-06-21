@@ -124,4 +124,4 @@ No one helped me! I'm actually kind of excited about this. I was super intimidat
 
 Reflection:
 
-...
+Mostly I learned more about Python syntax, got more comfortable using Python in the command line and using Git. Going into this assignment I just wish I was as comfortable as I feel now using the above stated programs, it would have gone much faster! My advice to future students would be to read the directions multiple times and very carefully, all the information to complete the assignment is there!

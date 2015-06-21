@@ -121,14 +121,14 @@ else:
     categorize = 'moderate GC content'
 
 # Print the answer
-print('GC Catorization:', categorize)
-print('Total Count:', total_count)
-print('Sequence Length:', len(seq))
-print('Sum of GCAT:', sum_gcat)
 print('GC-content:', gc_content)
 print('AT-content:', at_content)
-print('AT/GC Ratio:', at_gc_ratio)
 print('G-count:', g_count)
 print('C-count:', c_count)
 print('A-count:', a_count)
 print('T-count:', t_count)
+print('Sum of GCAT:', sum_gcat)
+print('Total Count:', total_count)
+print('Sequence Length:', len(seq))
+print('AT/GC Ratio:', at_gc_ratio)
+print('GC Catorization:', categorize)
