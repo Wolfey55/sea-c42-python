@@ -52,7 +52,61 @@ sample_1.fastq:
 
 Problem 6:
 
-...
+sample_1.fastq:
+    Total Count: 27000000
+    Sequence Length: 27000000
+    Sum of GCAT: 26980735
+
+sample_2.fastq:
+    Total Count: 27000000
+    Sequence Length: 27000000
+    Sum of GCAT: 26977435
+
+sample_3.fastq:
+    Total Count: 9981008
+    Sequence Length: 9981008
+    Sum of GCAT: 9980961
+
+sample_4.fastq:
+    Total Count: 9981008
+    Sequence Length: 9981008
+    Sum of GCAT: 9980961
+
+sample_5.fastq:
+    Total Count: 76
+    Sequence Length: 76
+    Sum of GCAT: 75
+
+sample_6.fastq:
+    Total Count: 27000
+    Sequence Length: 27000
+    Sum of GCAT: 26990
+
+test-high-gc-1.fastq:
+    Total Count: 40000
+    Sequence Length: 40000
+    Sum of GCAT: 39840
+
+test-high-gc-2.fastq:
+    Total Count: 40000
+    Sequence Length: 40000
+    Sum of GCAT: 39841
+
+test-moderate-gc-1.fastq:
+    Total Count: 40000
+    Sequence Length: 40000
+    Sum of GCAT: 39841
+
+test-moderate-gc-2.fastq:
+    Total Count: 40000
+    Sequence Length: 40000
+    Sum of GCAT: 39811
+
+In every .fastq file except for test-small.fastq the sum of the G, C, A and T count is less than the total count and sequence length. This is because within the sequence there are a handful characters that are not G, C, A or T.
+
+Only the sum of GCAT quantity can be used in the denominator to compute the GC and AT content because the total count and sequence length include characters other than G, C, A or T in their count.
+
+My program incorrectly computed the GC and AT content because of this. I will fix this now.
 
 Problem 7:
 

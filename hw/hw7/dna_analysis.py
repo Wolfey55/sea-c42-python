@@ -49,6 +49,8 @@ for line in inputfile:
 
 # Total nucleotides seen so far.
 total_count = 0
+# sum of G, C, A and T count.
+sum_gcat = 0
 # Number of GC and AT nucleotides seen so far.
 gc_count = 0
 at_count = 0
@@ -93,14 +95,20 @@ for bp in seq:
         # increment the count of T
         t_count = t_count + 1
 
+# add the g, c , a and t count to get an accurate total count
+sum_gcat = g_count + c_count + a_count + t_count
 
-# divide the gc_count by the total_count
-gc_content = float(gc_count) / total_count
 
-# divide the at_count by the total_count
-at_content = float(at_count) / total_count
+# divide the gc_count by the sum_gcat
+gc_content = float(gc_count) / sum_gcat
+
+# divide the at_count by the sum_gcat
+at_content = float(at_count) / sum_gcat
 
 # Print the answer
+print('Total Count:', total_count)
+print('Sequence Length:', len(seq))
+print('Sum of GCAT:', sum_gcat)
 print('GC-content:', gc_content)
 print('AT-content:', at_content)
 print('G-count:', g_count)
