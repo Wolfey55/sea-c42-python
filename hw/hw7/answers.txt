@@ -115,7 +115,8 @@ sample_1.fastq:
 
 Problem 8:
 
-...
+sample_1.fastq:
+    GC Catorization: moderate GC content
 
 Collaboration:
 

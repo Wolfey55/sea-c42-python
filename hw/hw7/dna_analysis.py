@@ -59,6 +59,8 @@ g_count = 0
 c_count = 0
 a_count = 0
 t_count = 0
+# Categorization based on GC content
+categorize = ""
 
 # for each base pair in the string,
 for bp in seq:
@@ -108,7 +110,18 @@ at_content = float(at_count) / sum_gcat
 # calculates the AT/GC ratio.
 at_gc_ratio = (a_count + t_count) / (g_count + c_count)
 
+# categorizes organisims based on GC content.
+if gc_content > 0.6:
+    categorize = 'high GC content'
+
+elif gc_content < 0.4:
+    categorize = 'low GC content'
+
+else:
+    categorize = 'moderate GC content'
+
 # Print the answer
+print('GC Catorization:', categorize)
 print('Total Count:', total_count)
 print('Sequence Length:', len(seq))
 print('Sum of GCAT:', sum_gcat)
