@@ -7,8 +7,8 @@ def fibonacci(n):
 print(fibonacci(0))
 
 
+# function to evaluate lucas series
 def lucas(n):
-    # function to evaluate lucas series
     if n < 1:
         return 2
     if n == 1:
@@ -21,7 +21,6 @@ print(lucas(0))
 
 # function to evaluate both fibonacci and lucas series
 def sum_series(n, a=0, b=1):
-    # evaluates fibonacci series
     if n < 1:
         return a
     elif n == 1:
@@ -29,4 +28,4 @@ def sum_series(n, a=0, b=1):
     else:
         return(sum_series(n - 1, a, b) + sum_series(n - 2, a, b))
 
-
+print(sum_series(0, 10, 20))
