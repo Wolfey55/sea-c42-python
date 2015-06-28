@@ -1,81 +1,72 @@
-import math
-
+import sys
 
 donor_list = {
-    'Bill Gates': [10000, 25000, 5000], 'Ed Sheeren': [3250]
+    'Bill Gates': [10000, 25000, 5000, 17500],
+    'Ed Sheeren': [3250, 500],
+    'Eddie Murphy': [5000, 1750, 3200],
+    'Tom Cruise': [20000, 15000]
 }
 
 
-mode = input("Welcome to Mailroom Madnes. \n"
-"Choose from the following: \n"
-"T - Send a (T)hank You \n"
-"R - Create a (R)eport \n"
-"quit - Quit the program")
-
-# To send thank you email.
-if mode == 'T' or 't':
-    name = input("Please enter the donors name. ")
-    amount = int(input("Please enter the donation amount."))
+def create_report():
     for key in donor_list:
-        if name == key:
-            if amount != int:
-                amount = int(input("Please enter the donation amount."))
-            elif amount == int:
-                donor_list[name].append(amount)
-        elif name != key:
+        print("Name: ", key)
+        print("Donations: ", donor_list.get(key))
+
+
+def donor_names():
+    for key in donor_list:
+        print(key)
+
+
+def add_donation(donor, dollars):
+    for key in donor_list:
+        if donor == key:
+            if type(dollars) == int:
+                # append donation to existing donor's record
+                donor_list[donor].append(dollars)
+            else:
+                # Re-prompt user for donation amount
+                dollars = int(input("Please enter the donation amount."))
+
+        #else:
             # add new donor to list
-            donor_list[name] = amount
+            # donor_list[donor] = amount
+            # print(donor_list)
 
-    print("Dear %s, \n"
-    " \n "
-    "Thank you so much for your kind donation of $%s. We here at the Foundation \
-for Homeless Whales greatly appreciate it. Your money will go towards \
-creating new oceans on the moon for whales to live in. \n"
-    " \n "
-    "Thanks again, \n"
-    "Jim Grant \n"
-    "Director, F.H.W." % (name, amount))
+def send_thanks(donor, dollars):
+    print("Dear %s, \n" "\n" "Thank you so much for your kind donation of \
+        $%s. We here at the Foundation for Homeless Whales greatly appreciate \
+        it. Your money will go towards creating new oceans on the moon for \
+        whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
+        "Director, F.H.W." % (donor, dollars))
 
+if __name__ == "__main__":
 
-"""class Donors(object):
-    __init__ functions as the class constructor
-    def __init__(self, name=None, orig_don=0, num_of_don=0, new_donation=0):
-        self.name = name.lower()
-        self.num_of_don = num_of_don
-        self.new_donation = new_donation
-        self.total_donations = self.orig_don + self.new_donation
+    mode = input("Welcome to Mailroom Madness.\n "
+    "Choose from the following:\n "
+    "T - Send a (T)hank You\n "
+    "R - Create a (R)eport\n "
+    "quit - Quit the program\n ")
 
+    if mode == 'T' or mode == 't':
 
-mode = input("Send thank you or generate report?").lower()
+        name = input("Please enter a name, or choose from the following:\n "
+        "list - Print a list of previous donors\n "
+        "quit - Return to main menu\n ")
 
-if mode == "send thank you":
-    name = input("Please enter the donors name. ").lower()
-    amount = input("Please enter the donation amount.")
-    for name in doner_list:
-        if name == doner_list.name:
-            if math.isnan(amount) = True:
-                Re-prompt user for amount
-            elif math.isnan(amount) = False:
-                add donation to total donations
+        amount = int(input("Please enter the donation amount.\n "))
 
-            print("email content with %s and %s added." % (name, amount))
+        if name == 'list':
+            donor_names()
 
-         if name does not exist in database
-            doner_list.append(Donors(name, 0, 0, amount))
+        elif name == 'quit':
+            exit()
 
-if mode == "generate report":
+        else:
+            add_donation(name, amount)
+            print(donor_list)
+            send_thanks(name, amount)
 
-    # membership: s = [1, 2, 3, 4, 5, 6]; 5 in s = True; 7 in s = False
-    # s = "some string"; "some" in s = True
-
-tuple('done'); (d, o, n, 'e')
-nesting: l = [[1, 2, 3], [4, 5, 6]]; print(l[1])
-a = [a, c, b]; a.sort(); a = [a, b, c]
-
-animals = ["ant", "bat", "cat"]
-print animals.index("bat")
-animals.insert(1, "dog")
-print animals
-
-
-"""
+    if mode == 'R' or mode == 'r':
+        create_report()
