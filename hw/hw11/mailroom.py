@@ -1,10 +1,9 @@
-import sys
-
 donor_list = {
     'Bill Gates': [10000, 25000, 5000, 17500],
     'Ed Sheeren': [3250, 500],
     'Eddie Murphy': [5000, 1750, 3200],
-    'Tom Cruise': [20000, 15000]
+    'Tom Cruise': [20000, 15000],
+    'Stephan Bosch': [2500, 3250, 1000]
 }
 
 
@@ -32,12 +31,14 @@ def add_donor(donor, dollars):
     donor_list[donor] = dollars
     print(donor_list)
 
+
 def send_thanks(donor, dollars):
     print("Dear %s, \n" "\n" "Thank you so much for your kind donation of\
 $%s. We here at the Foundation for Homeless Whales greatly appreciate\
 it. Your money will go towards creating new oceans on the moon for\
 whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
 "Director, F.H.W." % (donor, dollars))
+
 
 if __name__ == "__main__":
 
