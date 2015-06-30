@@ -19,27 +19,26 @@ def donor_names():
         print(key)
 
 
-def add_donation(donor, dollars):
-    for key in donor_list:
-        if donor == key:
-            if type(dollars) == int:
-                # append donation to existing donor's record
-                donor_list[donor].append(dollars)
-            else:
-                # Re-prompt user for donation amount
-                dollars = int(input("Please enter the donation amount."))
+def append_donation(donor, dollars):
+    """for key in donor_list:
+        if type(dollars) == int:"""
+    # append donation to existing donor's record
+    donor_list[donor].append(dollars)
+    """else:
+        # Re-prompt user for donation amount
+        dollars = int(input("Please enter the donation amount."))"""
 
-        #else:
-            # add new donor to list
-            # donor_list[donor] = amount
-            # print(donor_list)
+
+def add_donor(donor, dollars):
+    donor_list[donor] = dollars
+    print(donor_list)
 
 def send_thanks(donor, dollars):
-    print("Dear %s, \n" "\n" "Thank you so much for your kind donation of \
-        $%s. We here at the Foundation for Homeless Whales greatly appreciate \
-        it. Your money will go towards creating new oceans on the moon for \
-        whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
-        "Director, F.H.W." % (donor, dollars))
+    print("Dear %s, \n" "\n" "Thank you so much for your kind donation of\
+$%s. We here at the Foundation for Homeless Whales greatly appreciate\
+it. Your money will go towards creating new oceans on the moon for\
+whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
+"Director, F.H.W." % (donor, dollars))
 
 if __name__ == "__main__":
 
@@ -64,8 +63,21 @@ if __name__ == "__main__":
             exit()
 
         else:
-            add_donation(name, amount)
-            print(donor_list)
+            check_list = False
+            for key in donor_list:
+                if name == key:
+                    check_list = True
+                    break
+                else:
+                    check_list = False
+
+            if check_list == True:
+                append_donation(name, amount)
+                print(donor_list)
+            else:
+                # add new donor to list
+                add_donor(name, amount)
+
             send_thanks(name, amount)
 
     if mode == 'R' or mode == 'r':
