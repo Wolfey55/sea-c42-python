@@ -9,9 +9,13 @@ donor_list = {
 
 
 def create_report():
+    print("Name    | Total | # | Average\n" + ('_' * 50))
     for key in donor_list:
-        print("Name: ", key)
-        print("Donations: ", donor_list.get(key))
+        donor_name = key
+        total = sum(donor_list[key])
+        number = len(donor_list[key])
+        average = total / number
+        print('%s | $%d | %d | $%d' % (donor_name, total, number, average))
 
 
 def donor_names():
@@ -20,13 +24,8 @@ def donor_names():
 
 
 def append_donation(donor, dollars):
-    """for key in donor_list:
-        if type(dollars) == int:"""
     # append donation to existing donor's record
     donor_list[donor].append(dollars)
-    """else:
-        # Re-prompt user for donation amount
-        dollars = int(input("Please enter the donation amount."))"""
 
 
 def add_donor(donor, dollars):
