@@ -3,13 +3,10 @@ try:
     lines = f.readlines()
     f.close()
     d = {}
-    words = ""
-    for line in range(len(lines)):
-        #lines[line].split()
-        words += lines[line]
-        for word in words:
-            #words[word].append(word.split())
-            words.split('-')
+    words = []
+    for line in lines:
+        words.extend(line.split())
+
     print(words)
     #for (i, word) in enumerate(words):
         #d[(words[i], words[i + 1])] = [words[i + 2]]
