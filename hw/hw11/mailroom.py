@@ -42,11 +42,19 @@ whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
 
 if __name__ == "__main__":
 
-    mode = input("Welcome to Mailroom Madness.\n "
-    "Choose from the following:\n "
-    "T - Send a (T)hank You\n "
-    "R - Create a (R)eport\n "
-    "quit - Quit the program\n ")
+    while True:
+        try:
+            # Make a try loop for to make sure input is R, T or quit
+            mode = input("Welcome to Mailroom Madness.\n "
+            "Choose from the following:\n "
+            "T - Send a (T)hank You\n "
+            "R - Create a (R)eport\n "
+            "quit - Quit the program\n ")
+        except (mode != 'R' and mode != 'T' and mode != 'quit'):
+            print("Invalid input.")
+            continue
+        else:
+            break
 
     if mode == 'T' or mode == 't':
 
@@ -54,7 +62,14 @@ if __name__ == "__main__":
         "list - Print a list of previous donors\n "
         "quit - Return to main menu\n ")
 
-        amount = int(input("Please enter the donation amount.\n "))
+        while True:
+            try:
+                amount = int(input("Please enter the donation amount.\n "))
+            except ValueError:
+                print("Invalid input, please enter a number.")
+                continue
+            else:
+                break
 
         if name == 'list':
             donor_names()
@@ -82,3 +97,6 @@ if __name__ == "__main__":
 
     if mode == 'R' or mode == 'r':
         create_report()
+
+    elif mode == 'quit':
+        exit()
