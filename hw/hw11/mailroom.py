@@ -8,13 +8,13 @@ donor_list = {
 
 
 def create_report():
-    print("Name    | Total | # | Average\n" + ('_' * 50))
+    print("Name\t\t|\tTotal\t|\t#\t|\tAverage\n" + ('_' * 50))
     for key in donor_list:
         donor_name = key
         total = sum(donor_list[key])
         number = len(donor_list[key])
         average = total / number
-        print('%s | $%d | %d | $%d' % (donor_name, total, number, average))
+        print('%s\t|\t$%d\t|\t%d\t|\t$%d' % (donor_name, total, number, average))
 
 
 def donor_names():
@@ -42,19 +42,20 @@ whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
 
 if __name__ == "__main__":
 
-    while True:
-        try:
+    """ while True:
+        try: """
             # Make a try loop for to make sure input is R, T or quit
-            mode = input("Welcome to Mailroom Madness.\n "
-            "Choose from the following:\n "
-            "T - Send a (T)hank You\n "
-            "R - Create a (R)eport\n "
-            "quit - Quit the program\n ")
-        except (mode != 'R' and mode != 'T' and mode != 'quit'):
+    mode = input("Welcome to Mailroom Madness.\n "
+    "Choose from the following:\n "
+    "T - Send a (T)hank You\n "
+    "R - Create a (R)eport\n "
+    "quit - Quit the program\n ")
+
+        """ except (mode != 'R' and mode != 'T' and mode != 'quit'):
             print("Invalid input.")
             continue
         else:
-            break
+            break """
 
     if mode == 'T' or mode == 't':
 
