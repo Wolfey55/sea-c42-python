@@ -37,10 +37,7 @@ def state_edges(election_result_rows):
 
     d = {}
     for row in election_result_rows:
-        state = row['State']
-        dem = float(row['Dem'])
-        rep = float(row['Rep'])
-        d[state] = dem - rep
+        d[row['State']] = row_to_edge(row)
 
     return d
     #TODO: Implement this function
@@ -91,16 +88,40 @@ def unique_column_values(rows, column_name):
     Given a list of rows and the name of a column (a string),
     returns a set containing all values in that column.
     """
+    values = set()
+
+    for row in rows:
+        values.add(row[column_name])
+
+    return values
     #TODO: Implement this function
-    pass
+
 
 def pollster_predictions(poll_rows):
     """
     Given a list of *PollDataRow*s, returns *PollsterPredictions*.
     For a given pollster, uses only the most recent poll for a state.
     """
+
+    output = {}
+
+    pollster_set = unique_column_values(poll_rows, 'Pollster')
+    state_set = unique_column_values(poll_rows, 'State')
+
+    for pollster in pollster_set:
+        recent_list = []
+        for state in state_set:
+            recent = most_recent_poll_row(poll_rows, pollster, state)
+
+            if recent != None:
+                recent_list.append(recent)
+
+        if len(recent_list) > 0:
+            output[pollster] = state_edges(recent_list)
+
+    return output
     #TODO: Implement this function
-    pass
+
 
 
 ################################################################################
