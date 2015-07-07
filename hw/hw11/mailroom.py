@@ -34,7 +34,7 @@ def add_donor(donor, dollars):
 
 def send_thanks(donor, dollars):
     print("Dear %s, \n" "\n" "Thank you so much for your kind donation of\
-$%s. We here at the Foundation for Homeless Whales greatly appreciate\
+$%s. We here at the Foundation for Homeless Whales greatly appreciate \
 it. Your money will go towards creating new oceans on the moon for\
 whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
 "Director, F.H.W." % (donor, dollars))
@@ -42,62 +42,65 @@ whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
 
 if __name__ == "__main__":
 
-    """ while True:
-        try: """
-            # Make a try loop for to make sure input is R, T or quit
     mode = input("Welcome to Mailroom Madness.\n "
     "Choose from the following:\n "
     "T - Send a (T)hank You\n "
     "R - Create a (R)eport\n "
     "quit - Quit the program\n ")
 
-        """ except (mode != 'R' and mode != 'T' and mode != 'quit'):
-            print("Invalid input.")
-            continue
-        else:
-            break """
 
-    if mode == 'T' or mode == 't':
+    while True:
+        if mode == 'T' or mode == 't':
 
-        name = input("Please enter a name, or choose from the following:\n "
-        "list - Print a list of previous donors\n "
-        "quit - Return to main menu\n ")
+            name = input("Please enter a name, or choose from the following:\n "
+            "list - Print a list of previous donors\n "
+            "quit - Return to main menu\n ")
 
-        while True:
-            try:
-                amount = int(input("Please enter the donation amount.\n "))
-            except ValueError:
-                print("Invalid input, please enter a number.")
-                continue
+            if name == 'quit':
+                exit()
+
+            elif name == 'list':
+                donor_names()
+
             else:
-                break
+                while True:
+                    try:
+                        amount = int(input("Please enter the donation amount.\n "))
+                    except ValueError:
+                        print("Invalid input, please enter a number.")
+                        continue
+                    else:
+                        break
 
-        if name == 'list':
-            donor_names()
+                check_list = False
+                for key in donor_list:
+                    if name == key:
+                        check_list = True
+                        break
+                    else:
+                        check_list = False
 
-        elif name == 'quit':
+                if check_list == True:
+                    append_donation(name, amount)
+                    print(donor_list)
+                else:
+                    # add new donor to list
+                    add_donor(name, amount)
+
+                send_thanks(name, amount)
+
+            break
+
+        if mode == 'R' or mode == 'r':
+            create_report()
+
+            break
+
+        if mode == 'quit':
             exit()
 
+            break
+
         else:
-            check_list = False
-            for key in donor_list:
-                if name == key:
-                    check_list = True
-                    break
-                else:
-                    check_list = False
+            mode = input("Invalid input. Please enter 'R', 'T' or 'quit'")
 
-            if check_list == True:
-                append_donation(name, amount)
-                print(donor_list)
-            else:
-                # add new donor to list
-                add_donor(name, amount)
-
-            send_thanks(name, amount)
-
-    if mode == 'R' or mode == 'r':
-        create_report()
-
-    elif mode == 'quit':
-        exit()
