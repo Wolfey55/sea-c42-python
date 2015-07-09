@@ -20,8 +20,9 @@ class Element(object):
     def append(self, new_text):
         self.content += new_text
 
-    def render(self, f, ind=""):
-        f.write(self.content)
+    def render(self, file_out, indent=""):
+        indented_content = indent + self.content
+        file_out.write(indented_content)
 
 
 class Html(Element):
