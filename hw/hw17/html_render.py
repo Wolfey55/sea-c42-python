@@ -7,5 +7,36 @@ Python class example.
 
 # The start of it all:
 # Fill it all in here.
+
+
 class Element(object):
-    pass
+
+    indent = "    "
+
+    def __init__(self, tag='', content=''):
+        self.tag = tag
+        self.content = content
+
+    def append(self, new_text):
+        self.content += new_text
+
+    def render(self, f, ind=""):
+        f.write(self.content)
+
+
+class Html(Element):
+
+    def __init__(self):
+        Element.__init__(self, 'html', '')
+
+
+class Body(Element):
+
+    def __init__(self):
+        Element.__init__(self, 'body', '')
+
+
+class P(Element):
+
+    def __init__(self, content):
+        Element.__init__(self, 'p', content)

@@ -18,19 +18,19 @@ def render(page, filename):
    """
    render the tree of elements
 
-   This uses cSstringIO to renderto memory, then dump to console and
+   This uses cSstringIO to render to memory, then dump to console and
    write to file -- very handy!
    """
 
    f = io.StringIO()
    page.render(f)
 
-   f.reset()
+   f.seek(0)
 
    print(f.read())
 
-   f.reset()
-   codecs.open(filename, 'w', encoding="utf-8").write( f.read() )
+   f.seek(0)
+   codecs.open(filename, 'w', encoding="utf-8").write(f.read())
 
 
 ## Step 1
@@ -47,17 +47,17 @@ render(page, u"test_html_output1.html")
 # ## Step 2
 # ##########
 
-# page = hr.Html()
+#page = hr.Html()
 
-# body = hr.Body()
+#body = hr.Body()
 
-# body.append(hr.P(u"Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text"))
+#body.append(hr.P(u"Here is a paragraph of text -- there could be more of them, but this is enough  to show that we can do some text"))
 
-# body.append(hr.P(u"And here is another piece of text -- you should be able to add any number"))
+#body.append(hr.P(u"And here is another piece of text -- you should be able to add any number"))
 
-# page.append(body)
+#page.append(body)
 
-# render(page, u"test_html_output2.html")
+#render(page, u"test_html_output2.html")
 
 # # Step 3
 # ##########
