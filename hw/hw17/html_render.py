@@ -13,15 +13,21 @@ class Element(object):
 
     INDENT = "    "
 
-    def __init__(self, tag='', content=''):
+    def __init__(self, tag='', content='', **kwargs):
         self.tag = tag
         self.children = [content] if content else []
+        self.attributes = kwargs
+
 
     def append(self, new_child):
         self.children.append(new_child)
 
     def render(self, file_out, indent="    "):
-        file_out.write('%s<%s>\n' % (indent, self.tag))
+        string = ''
+        for (key, value) in self.attributes.items():
+            string += (' %s="%s"' % (key, value))
+
+        file_out.write('%s<%s%s>\n' % (indent, self.tag, string))
         for child in self.children:
             if (type(child) == str):
                 # add new content string without rendering
@@ -55,8 +61,8 @@ class Body(Element):
 
 class P(Element):
 
-    def __init__(self, content=''):
-        Element.__init__(self, 'p', content)
+    def __init__(self, content='', **kwargs):
+        Element.__init__(self, 'p', content, **kwargs)
 
 
 class Head(Element):
@@ -71,7 +77,8 @@ class Title(Element):
         Element.__init__(self, 'title', content)
 
     def render(self, file_out, indent=''):
-        file_out.write('%s%s<%s> %s </%s>\n' % (Element.INDENT, Element.INDENT, self.tag, self.children[0], self.tag))
+        file_out.write('%s%s<%s> %s </%s>\n' % (Element.INDENT, Element.INDENT,
+        self.tag, self.children[0], self.tag))
 
         #file_out.write('%s<%s>' % (Element.INDENT, self.tag) + self.children[0] + '</%s>\n' % (self.tag))
 
