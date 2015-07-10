@@ -35,11 +35,17 @@ def add_donor(donor, dollars):
 
 
 def send_thanks(donor, dollars):
-    print("Dear %s, \n" "\n" "Thank you so much for your kind donation of\
+
+    letter = ("Dear %s, \n" "\n" "Thank you so much for your kind donation of\
 $%s. We here at the Foundation for Homeless Whales greatly appreciate \
 it. Your money will go towards creating new oceans on the moon for\
 whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
 "Director, F.H.W." % (donor, dollars))
+
+    with open(donor + '.txt', 'w') as f:
+        f.write(letter)
+
+    print(letter)
 
 
 if __name__ == "__main__":
