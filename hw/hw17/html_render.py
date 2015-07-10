@@ -58,3 +58,20 @@ class P(Element):
     def __init__(self, content=''):
         Element.__init__(self, 'p', content)
 
+
+class Head(Element):
+
+    def __init__(self):
+        Element.__init__(self, 'head', '')
+
+
+class Title(Element):
+
+    def __init__(self, content=''):
+        Element.__init__(self, 'title', content)
+
+    def render(self, file_out, indent=''):
+        file_out.write('%s%s<%s> %s </%s>\n' % (Element.INDENT, Element.INDENT, self.tag, self.children[0], self.tag))
+
+        #file_out.write('%s<%s>' % (Element.INDENT, self.tag) + self.children[0] + '</%s>\n' % (self.tag))
+
