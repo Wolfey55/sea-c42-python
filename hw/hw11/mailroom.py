@@ -9,7 +9,9 @@ donor_list = {
 
 def create_report():
     print("Name\t\t|\tTotal\t|\t#\t|\tAverage\n" + ('_' * 50))
-    for key in donor_list:
+    sorted_list = sorted(donor_list, key=lambda donor: sum(donor_list[donor]), reverse=True)
+    #import pdb; pdb.set_trace()
+    for key in sorted_list:
         donor_name = key
         total = sum(donor_list[key])
         number = len(donor_list[key])
@@ -103,4 +105,3 @@ if __name__ == "__main__":
 
         else:
             mode = input("Invalid input. Please enter 'R', 'T' or 'quit'")
-
