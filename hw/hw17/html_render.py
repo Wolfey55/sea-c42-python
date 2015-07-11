@@ -114,11 +114,33 @@ class Br(SelfClosingTag):
         Element.__init__(self, 'br', content)
 
 
-class A(OneLineTag):
+class A(Element):
 
-    def __init__(self, link='', content=''):
-        #kwargs['href'] = link
-        Element.__init__(self, 'a', content)
+    def __init__(self, tag='', link='', content='', **kwargs):
+        """override init to accept a link"""
+        self.link = [link] if link else []
+        self.tag = tag
+        self.children = [content] if content else []
+        self.attributes = kwargs
+        # self.content = content
+        Element.__init__(self, 'a', content='', href=link, **kwargs)
+
+    def render(self, file_out, indent="    "):
+        string = ''
+        for (key, value) in self.attributes.items():
+            string += (' %s="%s"' % (key, value))
+
+        file_out.write('%s<%s%s>' % (indent, self.tag, string))
+
+        for child in self.children:
+            if (type(child) == str):
+                # add new content string without rendering
+                file_out.write(indent + Element.INDENT + child + '\n')
+
+            else:
+                # add new child node by recursively rendering
+                child.render(file_out, indent + Element.INDENT)
+        file_out.write('</%s>\n' % (self.tag))
 
         # def render(self, file_out, indent=''):
         #     file_out.write('%s%s<%s%s>%s</%s>\n' % (Element.INDENT, Element.INDENT,
