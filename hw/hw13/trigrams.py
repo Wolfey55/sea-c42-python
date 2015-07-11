@@ -1,6 +1,7 @@
 import sys
 import string
 import random
+import io
 
 filename = "sherlock_small.txt"
 d = {}
@@ -8,17 +9,19 @@ d = {}
 def read_data(file_name):
 
     try:
+        # Open the file, read content by line and close.
         f = open(file_name, 'r')
         lines = f.readlines()
         f.close()
 
-        text = ""
+        # Read through lines and put content in a list.
+        full_text = []
         for line in range(len(lines)):
-            text += lines[line]
-            #text.extend(line)
+            full_text.append(lines[line])
 
-        #text = text.split('--')
-        return text
+        # Joins all the items in full_text to create one string.
+        print(" ".join(full_text))
+        return " ".join(full_text)
 
     except IOError as e:
         print(str(e))
@@ -29,8 +32,11 @@ def strip_punctuation(texts):
 
     punctuation = string.punctuation
     punctuation = string.punctuation.replace("'", "")  # keep apostropies
-    punctuation = string.punctuation.replace("-", "")  # keep hyphon
+    punctuation = string.punctuation.replace("-", "")  # keep single hyphon
     table = dict([(ord(c), None) for c in punctuation])
+
+    # replace all the '--' with a space
+    texts = texts.replace('--', ' ')
 
     # lower-case everything to remove that complication:
     texts = texts.lower()
@@ -40,7 +46,7 @@ def strip_punctuation(texts):
 
     # split into words
     words = texts.split()
-    words = texts.split("--")
+    # words = texts.split("--")
 
     # remove the bare single quotes
     # " ' " is both a quote and an apostrophe
@@ -60,7 +66,6 @@ if __name__ == "__main__":
 
     strip_punctuation(read_data(filename))
 
-    print(string.punctuation)
 
 
 
