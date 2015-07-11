@@ -94,3 +94,17 @@ class Hr(Element):
 
         file_out.write('%s%s<%s %s/>\n' % (Element.INDENT, Element.INDENT,
         self.tag, string))
+
+
+class Br(Element):
+
+    def __init__(self, content=''):
+        Element.__init__(self, 'br', content)
+
+    def render(self, file_out, indent=''):
+        string = ''
+        for attribute in self.children:
+            string += ('%s ' % (attribute))
+
+        file_out.write('%s%s<%s %s/>\n' % (Element.INDENT, Element.INDENT,
+        self.tag, string))
