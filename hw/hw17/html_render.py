@@ -114,15 +114,15 @@ class Br(SelfClosingTag):
         Element.__init__(self, 'br', content)
 
 
-class A(Element):
+class A(OneLineTag):
 
     def __init__(self, link='', content=''):
         #kwargs['href'] = link
         Element.__init__(self, 'a', content)
 
-        def render(self, file_out, indent=''):
-            file_out.write('%s%s<%s%s>%s</%s>\n' % (Element.INDENT, Element.INDENT,
-            self.tag, self.children[0], self.children[1], self.tag))
+        # def render(self, file_out, indent=''):
+        #     file_out.write('%s%s<%s%s>%s</%s>\n' % (Element.INDENT, Element.INDENT,
+        #     self.tag, self.children[0], self.children[1], self.tag))
 
 
     #     file_out.write('%s%s<%s%s></%s>' % (Element.INDENT, Element.INDENT,
