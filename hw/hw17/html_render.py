@@ -28,6 +28,7 @@ class Element(object):
             string += (' %s="%s"' % (key, value))
 
         file_out.write('%s<%s%s>\n' % (indent, self.tag, string))
+
         for child in self.children:
             if (type(child) == str):
                 # add new content string without rendering
@@ -71,40 +72,58 @@ class Head(Element):
         Element.__init__(self, 'head', '')
 
 
-class Title(Element):
+class OneLineTag(Element):
 
-    def __init__(self, content=''):
-        Element.__init__(self, 'title', content)
+    def __init__(self, tag='', content='', **kwargs):
+        Element.__init__(self, tag, '', **kwargs)
 
     def render(self, file_out, indent=''):
         file_out.write('%s%s<%s> %s </%s>\n' % (Element.INDENT, Element.INDENT,
         self.tag, self.children[0], self.tag))
 
-        #file_out.write('%s<%s>' % (Element.INDENT, self.tag) + self.children[0] + '</%s>\n' % (self.tag))
 
-class Hr(Element):
+class Title(OneLineTag):
+
+    def __init__(self, content='', **kwargs):
+        Element.__init__(self, 'title', content, **kwargs)
+
+
+class SelfClosingTag(Element):
+
+    def __init__(self, tag, **kwargs):
+        Element.__init__(self, tag, '', **kwargs)
+
+    def render(self, file_out, indent=''):
+        string = ''
+        for attribute in self.children:
+            string += ('%s ' % (attribute))
+
+        file_out.write('%s%s<%s %s/>\n' % (Element.INDENT, Element.INDENT,
+        self.tag, string))
+
+
+class Hr(SelfClosingTag):
 
     def __init__(self, content=''):
         Element.__init__(self, 'hr', content)
 
-    def render(self, file_out, indent=''):
-        string = ''
-        for attribute in self.children:
-            string += ('%s ' % (attribute))
 
-        file_out.write('%s%s<%s %s/>\n' % (Element.INDENT, Element.INDENT,
-        self.tag, string))
-
-
-class Br(Element):
+class Br(SelfClosingTag):
 
     def __init__(self, content=''):
         Element.__init__(self, 'br', content)
 
-    def render(self, file_out, indent=''):
-        string = ''
-        for attribute in self.children:
-            string += ('%s ' % (attribute))
 
-        file_out.write('%s%s<%s %s/>\n' % (Element.INDENT, Element.INDENT,
-        self.tag, string))
+class A(Element):
+
+    def __init__(self, link='', content=''):
+        #kwargs['href'] = link
+        Element.__init__(self, 'a', content)
+
+        def render(self, file_out, indent=''):
+            file_out.write('%s%s<%s%s>%s</%s>\n' % (Element.INDENT, Element.INDENT,
+            self.tag, self.children[0], self.children[1], self.tag))
+
+
+    #     file_out.write('%s%s<%s%s></%s>' % (Element.INDENT, Element.INDENT,
+    #     self.tag, self.key_string, self.value_string, self.tag))
