@@ -82,3 +82,15 @@ class Title(Element):
 
         #file_out.write('%s<%s>' % (Element.INDENT, self.tag) + self.children[0] + '</%s>\n' % (self.tag))
 
+class Hr(Element):
+
+    def __init__(self, content=''):
+        Element.__init__(self, 'hr', content)
+
+    def render(self, file_out, indent=''):
+        string = ''
+        for attribute in self.children:
+            string += ('%s ' % (attribute))
+
+        file_out.write('%s%s<%s %s/>\n' % (Element.INDENT, Element.INDENT,
+        self.tag, string))
