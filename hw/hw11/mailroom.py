@@ -17,6 +17,7 @@ def create_report():
         number = len(donor_list[key])
         average = total / number
         print('%s\t|\t$%d\t|\t%d\t|\t$%d' % (donor_name, total, number, average))
+    return False
 
 
 def donor_names():
@@ -30,12 +31,12 @@ def append_donation(donor, dollars):
 
 
 def add_donor(donor, dollars):
-    donor_list[donor] = dollars
+    donor_list[donor] = [dollars]
 
 
 def send_thanks(donor, dollars):
 
-    letter = ("Dear %s, \n" "\n" "Thank you so much for your kind donation of\
+    letter = ("Dear %s, \n" "\n" "Thank you so much for your kind donation of \
 $%s. We here at the Foundation for Homeless Whales greatly appreciate \
 it. Your money will go towards creating new oceans on the moon for\
 whales to live in. \n" "\n" "Thanks again, \n" "Stephan Bosch \n"
