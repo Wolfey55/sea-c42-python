@@ -117,7 +117,7 @@ def create_text(word_pairs):
                 # append a randomly chosen value for matching key
                 sentence.append(random.choice(list(word_pairs[pair])))
             else:
-                # if the pair doesn't exist, stop adding words and end sentence.
+                # if the pair doesn't exist, end sentence.
                 break
         # capitalize beginning of sentence
         sentence[0] = sentence[0].capitalize()
