@@ -4,7 +4,7 @@ import random
 import io
 
 # file to be imported
-filename = "sherlock_small.txt"
+filename = "sherlock.txt"
 
 
 def read_data(file_name):
@@ -103,6 +103,7 @@ def create_text(word_pairs):
     # create an empty list for the new story to be stored in.
     new_story = []
 
+    # makes 100 sentences.
     for i in range(100):
         # create list of the keys in word_pairs.
         key_list = list(word_pairs.keys())
