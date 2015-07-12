@@ -31,7 +31,6 @@ def append_donation(donor, dollars):
 
 def add_donor(donor, dollars):
     donor_list[donor] = dollars
-    print(donor_list)
 
 
 def send_thanks(donor, dollars):
@@ -39,7 +38,7 @@ def send_thanks(donor, dollars):
     letter = ("Dear %s, \n" "\n" "Thank you so much for your kind donation of\
 $%s. We here at the Foundation for Homeless Whales greatly appreciate \
 it. Your money will go towards creating new oceans on the moon for\
-whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
+whales to live in. \n" "\n" "Thanks again, \n" "Stephan Bosch \n"
 "Director, F.H.W." % (donor, dollars))
 
     with open(donor + '.txt', 'w') as f:
@@ -50,64 +49,67 @@ whales to live in. \n" "\n" "Thanks again, \n" "Jim Grant \n"
 
 if __name__ == "__main__":
 
-    mode = input("Welcome to Mailroom Madness.\n "
-    "Choose from the following:\n "
-    "T - Send a (T)hank You\n "
-    "R - Create a (R)eport\n "
-    "quit - Quit the program\n ")
-
-
     while True:
-        if mode == 'T' or mode == 't':
+        mode = input("Welcome to Mailroom Madness.\n "
+        "Choose from the following:\n "
+        "T - Send a (T)hank You\n "
+        "R - Create a (R)eport\n "
+        "quit - Quit the program\n ")
 
-            name = input("Please enter a name, or choose from the following:\n "
-            "list - Print a list of previous donors\n "
-            "quit - Return to main menu\n ")
 
-            if name == 'quit':
+        while True:
+            if mode == 'T' or mode == 't':
+
+                while True:
+                    name = input("Please enter a name, or choose from the following:\n "
+                    "list - Print a list of previous donors\n "
+                    "quit - Return to main menu\n ")
+
+                    if name == 'quit':
+                        break
+
+                    elif name == 'list':
+                        donor_names()
+
+                    else:
+                        while True:
+                            try:
+                                amount = int(input("Please enter the donation amount.\n "))
+                            except ValueError:
+                                print("Invalid input, please enter a number.")
+                                continue
+                            else:
+                                break
+
+                        check_list = False
+                        for key in donor_list:
+                            if name == key:
+                                check_list = True
+                                break
+                            else:
+                                check_list = False
+
+                        if check_list == True:
+                            append_donation(name, amount)
+                        else:
+                            # add new donor to list
+                            add_donor(name, amount)
+
+                        send_thanks(name, amount)
+
+                        break
+
+                break
+
+            if mode == 'R' or mode == 'r':
+                create_report()
+
+                break
+
+            if mode == 'quit':
                 exit()
 
-            elif name == 'list':
-                donor_names()
+                break
 
             else:
-                while True:
-                    try:
-                        amount = int(input("Please enter the donation amount.\n "))
-                    except ValueError:
-                        print("Invalid input, please enter a number.")
-                        continue
-                    else:
-                        break
-
-                check_list = False
-                for key in donor_list:
-                    if name == key:
-                        check_list = True
-                        break
-                    else:
-                        check_list = False
-
-                if check_list == True:
-                    append_donation(name, amount)
-                    print(donor_list)
-                else:
-                    # add new donor to list
-                    add_donor(name, amount)
-
-                send_thanks(name, amount)
-
-            break
-
-        if mode == 'R' or mode == 'r':
-            create_report()
-
-            break
-
-        if mode == 'quit':
-            exit()
-
-            break
-
-        else:
-            mode = input("Invalid input. Please enter 'R', 'T' or 'quit'")
+                mode = input("Invalid input. Please enter 'R', 'T' or 'quit'")
