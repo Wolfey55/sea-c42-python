@@ -18,7 +18,6 @@ class Element(object):
         self.children = [content] if content else []
         self.attributes = kwargs
 
-
     def append(self, new_child):
         self.children.append(new_child)
 
@@ -38,10 +37,6 @@ class Element(object):
                 # add new child node by recursively rendering
                 child.render(file_out, indent + Element.INDENT)
         file_out.write('%s</%s>\n' % (indent, self.tag))
-
-        #indented_content = indent + Element.INDENT + self.content
-        #final_content = '<%s>\n %s \n</%s>' % (self.tag, indented_content, self.tag)
-        #file_out.write(final_content)
 
 
 class Html(Element):
@@ -114,33 +109,35 @@ class Br(SelfClosingTag):
         Element.__init__(self, 'br', content)
 
 
-class A(Element):
+# class A(Element):
 
-    def __init__(self, tag='', link='', content='', **kwargs):
-        """override init to accept a link"""
-        self.link = [link] if link else []
-        self.tag = tag
-        self.children = [content] if content else []
-        self.attributes = kwargs
-        # self.content = content
-        Element.__init__(self, 'a', content='', href=link, **kwargs)
+#     def __init__(self, link='', content='', tag='', **kwargs):
+#         self.tag = tag
+#         self.links = [link] if link else []
+#         self.children = [content] if content else []
+#         self.attributes = kwargs
 
-    def render(self, file_out, indent="    "):
-        string = ''
-        for (key, value) in self.attributes.items():
-            string += (' %s="%s"' % (key, value))
+#     def append(self, new_child):
+#         self.children.append(new_child)
 
-        file_out.write('%s<%s%s>' % (indent, self.tag, string))
+#     def render(self, file_out, indent="    "):
+#         string = ''
+#         for (key, value) in self.attributes.items():
+#             string += (' %s="%s"' % (key, value))
 
-        for child in self.children:
-            if (type(child) == str):
-                # add new content string without rendering
-                file_out.write(indent + Element.INDENT + child + '\n')
+#         file_out.write('%s<%s%s>\n' % (indent, self.tag, string))
 
-            else:
-                # add new child node by recursively rendering
-                child.render(file_out, indent + Element.INDENT)
-        file_out.write('</%s>\n' % (self.tag))
+#         for child in self.children:
+#             if (type(child) == str):
+#                 # add new content string without rendering
+#                 file_out.write(indent + Element.INDENT + child + '\n')
+
+#             else:
+#                 # add new child node by recursively rendering
+#                 child.render(file_out, indent + Element.INDENT)
+#         file_out.write('%s</%s>\n' % (indent, self.tag))
+
+        # A.__init__(self, link, content, 'a', **kwargs)
 
         # def render(self, file_out, indent=''):
         #     file_out.write('%s%s<%s%s>%s</%s>\n' % (Element.INDENT, Element.INDENT,
